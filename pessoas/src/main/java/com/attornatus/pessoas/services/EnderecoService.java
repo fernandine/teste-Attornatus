@@ -1,11 +1,8 @@
 package com.attornatus.pessoas.services;
 
 import com.attornatus.pessoas.dtos.EnderecoDto;
-import com.attornatus.pessoas.dtos.PessoaDto;
 import com.attornatus.pessoas.entities.Endereco;
-import com.attornatus.pessoas.entities.Pessoa;
 import com.attornatus.pessoas.repositories.EnderecoRepository;
-import com.attornatus.pessoas.repositories.PessoaRepository;
 import com.attornatus.pessoas.services.exceptions.DatabaseException;
 import com.attornatus.pessoas.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +22,6 @@ public class EnderecoService {
 
     @Autowired
     private EnderecoRepository enderecoRepository;
-
-    @Autowired
-    private PessoaRepository pessoaRepository;
 
     @Transactional(readOnly = true)
     public List<EnderecoDto> findAll() {
@@ -50,7 +44,6 @@ public class EnderecoService {
         entity.setLogradouro(dto.getLogradouro());
         entity.setCidade(dto.getCidade());
         entity.setNumero(dto.getNumero());
-
 
         entity = enderecoRepository.save(entity);
         return new EnderecoDto(entity);

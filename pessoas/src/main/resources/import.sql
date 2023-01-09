@@ -14,5 +14,5 @@ INSERT INTO tb_endereco(cep, logradouro, cidade, numero) VALUES ('34001-094','Ru
 INSERT INTO tb_pessoa_endereco (pessoa_id, endereco_id) VALUES (1, 1);
 INSERT INTO tb_pessoa_endereco (pessoa_id, endereco_id) VALUES (2, 2);
 INSERT INTO tb_pessoa_endereco (pessoa_id, endereco_id) VALUES (3, 3);
-INSERT INTO tb_pessoa_endereco (pessoa_id, endereco_id) VALUES (4, 2);
-INSERT INTO tb_pessoa_endereco (pessoa_id, endereco_id) VALUES (5, 3);
+INSERT INTO tb_pessoa_endereco (pessoa_id, endereco_id) VALUES (4, 4);
+INSERT INTO tb_pessoa_endereco (pessoa_id, endereco_id) VALUES (5, 5);

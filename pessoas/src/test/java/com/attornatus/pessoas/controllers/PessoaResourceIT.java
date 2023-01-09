@@ -45,7 +45,7 @@ public class PessoaResourceIT {
         @Test
         public void insertShouldInsertResource() throws Exception {
 
-            PessoaDto dto = new PessoaDto(null, "Brad Pitt", null, new ArrayList<>());
+            PessoaDto dto = new PessoaDto(null, "Brad Pitt", null);
             String jsonBody = objectMapper.writeValueAsString(dto);
 
             ResultActions result = mockMvc.perform(post("/pessoas").content(jsonBody).contentType(MediaType.APPLICATION_JSON)

@@ -59,7 +59,6 @@ public class PessoaService {
         for (EnderecoDto p : dto.getEnderecos()) {
             Endereco endereco = enderecoRepository.getReferenceById(p.getId());
             entity.getEnderecos().add(endereco);
-
         }
 
         entity = repository.save(entity);
