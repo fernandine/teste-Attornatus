@@ -30,7 +30,7 @@ public class EnderecoResourceIT {
 
         long existingId = 1L;
 
-        EnderecoDto dto = new EnderecoDto(null, "34001-090", "Rua Levy Firmino Alves", "Nova Lima", 40);
+        EnderecoDto dto = new EnderecoDto(null, "34001-090", "Rua Levy Firmino Alves", "Nova Lima", 40, false);
         String jsonBody = objectMapper.writeValueAsString(dto);
 
         ResultActions result =
@@ -52,7 +52,7 @@ public class EnderecoResourceIT {
 
         long nonExistingId = 1000L;
 
-        EnderecoDto dto = new EnderecoDto(null, "34001-090", "Rua Levy Firmino Alves", "Nova Lima", 40);
+        EnderecoDto dto = new EnderecoDto(null, "34001-090", "Rua Levy Firmino Alves", "Nova Lima", 40, false);
         String jsonBody = objectMapper.writeValueAsString(dto);
 
         ResultActions result =

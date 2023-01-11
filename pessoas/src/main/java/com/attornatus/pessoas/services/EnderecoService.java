@@ -12,10 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EnderecoService {
@@ -24,9 +21,9 @@ public class EnderecoService {
     private EnderecoRepository enderecoRepository;
 
     @Transactional(readOnly = true)
-    public List<EnderecoDto> findAll() {
-        List<Endereco> list = enderecoRepository.findAll();
-        return list.stream().map(x -> new EnderecoDto(x)).collect(Collectors.toList());
+    public Page<EnderecoDto> findByMain(boolean naoPrincipal, Pageable pageable) {
+        Page<Endereco> page = enderecoRepository.find(naoPrincipal, pageable);
+        return page.map(x -> new EnderecoDto(x));
     }
 
     //BUSCA PAGINADA
@@ -74,4 +71,5 @@ public class EnderecoService {
             throw new DatabaseException("Integrity violation");
         }
     }
+
 }

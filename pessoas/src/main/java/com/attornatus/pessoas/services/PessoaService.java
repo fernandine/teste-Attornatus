@@ -15,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +53,7 @@ public class PessoaService {
     public PessoaDto insert(PessoaDto dto) {
         Pessoa entity = new Pessoa();
         entity.setNome(dto.getNome());
-        entity.setDataNasc(dto.getDataNasc());
+        entity.setDataNascimento(dto.getDataNascimento());
 
         for (EnderecoDto p : dto.getEnderecos()) {
             Endereco endereco = enderecoRepository.getReferenceById(p.getId());
@@ -70,7 +69,7 @@ public class PessoaService {
         try {
             Pessoa entity = repository.getReferenceById(id);
             entity.setNome(dto.getNome());
-            entity.setDataNasc(dto.getDataNasc());
+            entity.setDataNascimento(dto.getDataNascimento());
             entity = repository.save(entity);
             return new PessoaDto(entity);
         } catch (EntityNotFoundException e) {
@@ -88,4 +87,3 @@ public class PessoaService {
         }
     }
 }
-

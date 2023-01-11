@@ -1,10 +1,13 @@
 package com.attornatus.pessoas.resources;
 
 import com.attornatus.pessoas.dtos.EnderecoDto;
+import com.attornatus.pessoas.dtos.PessoaDto;
 import com.attornatus.pessoas.services.EnderecoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -21,12 +24,15 @@ public class EnderecoResource {
     @Autowired
     private EnderecoService service;
 
-    @ApiOperation(value = "Obtendo a lista de todos enderecos cadastrados.")
+    @ApiOperation(value = "Busca todos os endereços e marca o endereco principal como true ou false.")
     @GetMapping
-    public ResponseEntity<List<EnderecoDto>> findAll() {
-        List<EnderecoDto> list = service.findAll();
+    public ResponseEntity<Page<EnderecoDto>> findByMain(
+            @RequestParam(value = "naoPrincipal", defaultValue = "false") Boolean principal,
+            Pageable pageable) {
+        Page<EnderecoDto> list = service.findByMain(principal, pageable);
         return ResponseEntity.ok().body(list);
     }
+
 
     @ApiOperation(value = "Cadastrando no banco de dados um endereco.")
     @PostMapping

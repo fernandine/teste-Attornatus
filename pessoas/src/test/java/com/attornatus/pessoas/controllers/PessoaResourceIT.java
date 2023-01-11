@@ -1,5 +1,6 @@
 package com.attornatus.pessoas.controllers;
 
+import static java.util.Collections.emptyList;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -45,7 +46,7 @@ public class PessoaResourceIT {
         @Test
         public void insertShouldInsertResource() throws Exception {
 
-            PessoaDto dto = new PessoaDto(null, "Brad Pitt", null);
+            PessoaDto dto = new PessoaDto(null, "Brad Pitt", null, null);
             String jsonBody = objectMapper.writeValueAsString(dto);
 
             ResultActions result = mockMvc.perform(post("/pessoas").content(jsonBody).contentType(MediaType.APPLICATION_JSON)
